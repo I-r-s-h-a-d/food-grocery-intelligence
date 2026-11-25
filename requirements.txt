@@ -3,9 +3,11 @@ numpy
 matplotlib
 seaborn
 scikit-learn
+xgboost
 scipy
-jupyter
+statsmodels
+duckdb
 plotly
 streamlit
-sqlalchemy
-psycopg2-binary
+jupyterlab
+ipykernel
