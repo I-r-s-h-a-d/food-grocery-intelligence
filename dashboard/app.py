@@ -2,15 +2,24 @@
 import streamlit as st
 import pandas as pd
 import joblib
+from pathlib import Path
 
-# Load trained model
-model = joblib.load("food_delivery_random_forest.pkl")
-
+# Configure Streamlit
 st.set_page_config(
     page_title="Food Delivery Intelligence",
     page_icon="🚚",
     layout="wide"
 )
+
+# Load trained model
+BASE_DIR = Path(__file__).resolve().parent.parent
+MODEL_PATH = BASE_DIR / "models" / "food_delivery_random_forest.pkl"
+
+if not MODEL_PATH.exists():
+    st.error(f"Trained model not found: {MODEL_PATH}")
+    st.stop()
+
+model = joblib.load(MODEL_PATH)
 
 st.title("🚚 Food & Grocery Delivery Intelligence")
 st.subheader("AI-Powered Delivery Delay Prediction")
@@ -29,8 +38,7 @@ city = st.sidebar.selectbox(
 )
 
 order_hour = st.sidebar.slider(
-    "Order Hour",
-    0, 23, 13
+    "Order Hour", 0, 23, 13
 )
 
 order_day = st.sidebar.selectbox(
@@ -76,13 +84,11 @@ if st.button("Predict Delivery Status"):
     }])
 
     prediction = int(model.predict(input_data)[0])
-
     probabilities = model.predict_proba(input_data)[0]
 
     late_probability = probabilities[1] * 100
 
     st.divider()
-
     st.subheader("Prediction Results")
 
     col1, col2 = st.columns(2)
@@ -120,3 +126,4 @@ Technologies:
 - Random Forest
 - Streamlit
 """)
+
