@@ -1,13 +1,5 @@
-pandas
-numpy
-matplotlib
-seaborn
-scikit-learn
-xgboost
-scipy
-statsmodels
-duckdb
-plotly
 streamlit
-jupyterlab
-ipykernel
+scikit-learn==1.6.1
+joblib==1.6.0
+pandas==3.1.1
+numpy==2.5.5
