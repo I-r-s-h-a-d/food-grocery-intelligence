@@ -15,3 +15,6 @@ Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, SQL, Streamlit, Google
 
 ## Project Status
 In Progress
+
+## Dashboard Preview
+![Food & Grocery Delivery Intelligence Dashboard](assets/dashboard-preview.png)
